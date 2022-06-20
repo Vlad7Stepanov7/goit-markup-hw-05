@@ -5,12 +5,14 @@
 /* дополнительный цвет текста #212121 */
 /* дополнительный цвет #2196F3 */
 /* цвет иконок #AFB1B8 */
+/* кубик по макету cubic-bezier(0.4, 0, 0.2, 1) */
 :root {
     --main-background-color: #ffffff;
     --main-color-text: #757575;
     --complementary-color-text: #212121;
     --complementary-color: #2196F3;
     --icon-color: #AFB1B8;
+    --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -112,12 +114,13 @@ margin-left: 50px;
 }
 .link-nav {
     display: block;
-    
     font-weight: 500;
         line-height: 1.14;
         letter-spacing: 0.02em;
         text-decoration: none;
     color: var(--complementary-color-text);
+
+    transition: color 250ms var(--cubic-bezier);
 }
 
 .link-nav:hover,
@@ -127,12 +130,36 @@ color: var(--complementary-color);
 
 
 .studio {
+    position: relative;
     color: var(--complementary-color);
 }
-.portfolio {
-    color: var(--complementary-color);
+.studio::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--complementary-color);
+    transform: translateY(33px);
 }
 
+.portfolio {
+    position: relative;
+    color: var(--complementary-color);
+}
+.portfolio::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--complementary-color);
+    transform: translateY(33px);
+}
 
 .links-header {
     display: flex;
@@ -161,6 +188,7 @@ fill: currentColor;
         letter-spacing: 0.02em;
     text-decoration: none;
     color: var(--main-color-text);
+    transition: color 250ms var(--cubic-bezier);
 }
 .link-header:hover,
 .link-header:focus {
@@ -205,7 +233,7 @@ color: var(--complementary-color);
         letter-spacing: 0.06em;
         text-transform: uppercase
 }
-.btn {
+.btn-main {
     display: flex;
         align-items: center;
         text-align: center;
@@ -222,8 +250,63 @@ color: var(--complementary-color);
         letter-spacing: 0.06em; 
     background-color: var(--complementary-color);
     color: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
     cursor: pointer;
+}
+.backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: opacity 250ms var(--cubic-bezier);
+}
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+   transform: translate(-50%, -50%) scale(1.2);
+    
+}
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+   transform: translate(-50%, -50%) scale(1);
+   transition: transform 250ms var(--cubic-bezier);
+    width: 528px;
+    height: 581px;
+    padding: 15px;
+    background-color: #FFFFFF;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+         0px 1px 1px rgba(0, 0, 0, 0.14),
+          0px 2px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+}
+.btn-close {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    top: 11px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--main-background-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.icon-close { 
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
 }
 /* benefits преимущества */
 .benefits {
@@ -295,6 +378,32 @@ display: flex;
 .list-activity>.items:first-child {
     margin-left: 0;
 }
+
+.activity-thumb {
+    position: relative;
+}
+.activity-thumb::before {
+   content: " ";
+   position: absolute;
+   width: 100%;
+   height: 70px;
+   left: 0;
+   bottom: 0;
+   background-color: rgba(47, 48, 58, 0.8);
+}
+
+.text-activity {
+    position: absolute;
+    min-width: 205px;
+    bottom: 27px;
+    left: 83px;
+font-weight: 700;
+    line-height: 1.14;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
 /* команда team */
 .team {
     background-color: #F5F4FA;
@@ -353,17 +462,25 @@ display: inline-block;
     height: 44px;
     padding: 12px;
     border-radius: 50%;
-}
-.link-team:hover,
-.link-team:focus
- {
-  background-color: var(--complementary-color);
+    transition: transform 250ms var(--cubic-bezier),
+    background-color 250ms var(--cubic-bezier);
 }
 
-.link-team:hover .icon-social-network,
-.link-team:focus .icon-social-network {
+.items-icon:hover .link-team {
+    transform: rotateY(360deg);
+    background-color: var(--complementary-color);
+}
+.link-team:focus {
+    transform: rotateY(360deg);
+        background-color: var(--complementary-color);
+}
+.items-icon:hover .icon-social-network {
     fill: #fff;
 }
+.link-team:focus .icon-social-network{
+    fill: #fff;
+}
+
 .list-social-networks .items:nth-child(n+2) {
     margin-left: 10px;
 }
@@ -371,6 +488,7 @@ display: inline-block;
     fill: var(--icon-color);
     width: 20px;
     height: 20px;
+    transition: fill 250ms var(--cubic-bezier);
 }
 /* regular customers постоянные клиенты*/
 .title-clients {
@@ -381,7 +499,7 @@ display: inline-block;
 display: flex;
 justify-content: center;
 }
-.list-clients > .items:nth-child(n+2){
+.list-clients > .items-clients:nth-child(n+2){
     margin-left: 30px;
 }
 
@@ -393,17 +511,24 @@ width: 170px;
     height: 92px;
     border: 1px solid #AFB1B8;
     border-radius: 4px;
+    transition: border 250ms var(--cubic-bezier);
  }
 
 .icon-clients {
+    transition: fill 250ms var(--cubic-bezier);
  fill: var(--icon-color);
 }
+.items-clients:hover .link-clients{
+    border: 1px solid var(--complementary-color);
+ }
 
-.link-clients:hover,
 .link-clients:focus {
-border: 1px solid var(--complementary-color);
+    border: 1px solid var(--complementary-color);
 }
-.link-clients:hover .icon-clients,
+.items-clients:hover .icon-clients {
+    fill: var(--complementary-color)
+}
+
 .link-clients:focus .icon-clients {
     fill: var(--complementary-color);
 }
@@ -425,6 +550,7 @@ margin-left: 9px;
     padding: 6px 0;
     border-radius: 4px;
     border: 1px solid transparent;
+
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
         font-size: 16px;
@@ -433,6 +559,10 @@ margin-left: 9px;
     cursor: pointer;
    background-color: #F5F4FA; 
    color: var(--complementary-color-text);
+
+   transition: background-color 250ms var(--cubic-bezier),
+   box-shadow 250ms var(--cubic-bezier),
+   color 250ms var(--cubic-bezier);
 }
 .btn-portfolio:hover,
 .btn-portfolio:focus {
@@ -462,14 +592,54 @@ min-width: 130px;
     flex-wrap: wrap;
     margin: -15px;
 }
-.list-works .items {
+.items-works {
     margin: 15px;
+    transition: box-shadow 250ms var(--cubic-bezier);
     
 }
-.list-works .items:hover {
+.items-works:hover {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
      0px 4px 4px rgba(0, 0, 0, 0.06),
       1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+.thumb-works {
+    position: relative;
+    overflow: hidden;
+}
+.thumb-works::before {
+    content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(33, 150, 243, 0.9);
+transform: translateY(100%);
+transition: transform 250ms var(--cubic-bezier);
+}
+.thumb-works:hover::before {
+transform: translateY(0);
+}
+.overlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateY(100%);
+    transition: transform 250ms var(--cubic-bezier);
+}
+.thumb-works:hover .overlay {
+    transform: translateY(0);
+}
+.overlay .text {
+    width: 322px;
+    font-size: 18px;
+        line-height: 1.55;
+        color: #FFFFFF;
 }
 .container-works {
     padding: 20px 24px;
@@ -521,6 +691,7 @@ color: #ffffff;
     line-height: 1.71;
     text-decoration: none;
 color: rgba(255, 255, 255, 0.6);
+transition: color 250ms var(--cubic-bezier);
 }
 .link-footer:last-child {
     margin-bottom: 0;
@@ -545,14 +716,7 @@ margin-left: 70px;
     display: flex;
 
 }
-.list-footer .items {
-    
-}
-/* .list-footer .items:hover,
-.list-footer .items:focus {
-    background-color: var(--complementary-color);
-} */
-.list-footer .items:nth-child(n+2) {
+.list-footer .items-footer:nth-child(n+2) {
     margin-left: 10px;
 }
 .link {
@@ -563,13 +727,59 @@ display: inline-block;
     height: 44px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
+    transition: transform 250ms var(--cubic-bezier),
+    background-color 250ms var(--cubic-bezier);
 }
-.link:hover,
-.link:focus {
+.items-footer:hover .link {
+    transform: rotateZ(360deg);
 background-color: var(--complementary-color);
 }
+.link:focus {
+    transform: rotateZ(360deg);
+        background-color: var(--complementary-color);
+}
+
 .link .icon-social-network {
     width: 20px;
     height: 20px;
     fill: #fff;
 }
+/* test */
+.btn-test {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px 40px;
+    border: 4px solid orange;
+    border-radius: 6px;
+    background-color: red;
+    color: black;
+    cursor: pointer;
+    transition: background-color 1000ms linear,
+    color 1000ms linear;
+    overflow: hidden
+}
+ .btn-test:hover,
+ .btn-test:focus {
+background-color: #000000;
+color: red;
+ }
+ .test-icon {
+    fill: currentColor;
+   transition: transform 1000ms linear;
+ }
+ .btn-test:hover .test-icon {
+transform: translateY(-40px);
+ }
+ .icon-test {
+    position: absolute;
+    top: 50%;
+    left: 43px;
+    transform: translateY(calc(-50% + 40px));
+    transition: transform 1000ms linear;
+    fill: currentColor;
+ }
+ .btn-test:hover .icon-test {
+    transform: translateY(-50%);
+ }

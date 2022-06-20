@@ -30,8 +30,7 @@
                 </li>
             </ul>
         </nav>
-        <div class="links-header">
-               
+        <div class="links-header">     
             <a href="mailto:info@devstudio.com" class="link-header">
                 <svg width="16" height="12" class="icon-mail">
                     <use href="./images/icons.svg#icon-mail"></use>
@@ -54,7 +53,16 @@
             <h1 class="main-title">
                 ЭФФЕКТИВНЫЕ РЕШЕНИЯ ДЛЯ ВАШЕГО БИЗНЕСА
             </h1>
-            <button type="button" class="btn">Заказать услугу</button>
+            <button type="button" class="btn-main" data-modal-open>Заказать услугу</button>
+            <div class="backdrop is-hidden" data-modal>
+                <div class="modal">
+                    <button type="button" class="btn-close data-modal-close" data-modal-close>
+                        <svg class="icon-close">
+                            <use href="./images/icons.svg#close"></use>
+                        </svg>
+                    </button >
+                </div>
+            </div>
         </div>  
       </section>
       <!-- Преимущества -->
@@ -107,13 +115,22 @@
             <h2 class="title-activity">Чем мы занимаемся</h2>
             <ul class="list list-activity">
                 <li class="items">
+                    <div class="activity-thumb">
                     <img src="images/box.jpg" alt="Работа за компьютером" width="370" class="img">
+                    <p class="text-activity">Десктопные приложения</p>
+                    </div>
                 </li>
                 <li class="items">
+                    <div class="activity-thumb">
                     <img src="images/img.jpg" alt="Работа за ноутбуком" width="370"  class="img">
+                    <p class="text-activity">Мобильные приложения</p>
+                    </div> 
                 </li>
                 <li class="items">
-                    <img src="images/img_p.jpg" alt="Работа за планшетом" width="370"  class="img">
+                    <div class="activity-thumb">
+                        <img src="images/img_p.jpg" alt="Работа за планшетом" width="370" class="img">
+                        <p class="text-activity">Дизайнерские решения</p>
+                    </div>
                 </li>
           </ul>
         </div>
@@ -129,28 +146,28 @@
                         <h3 class="title-name">Игорь Демьяненко</h3>
                         <p class="text-team">Product Designer</p>
                         <ul class="list list-social-networks">
-                            <li class="items">
+                            <li class="items-icon">
                                 <a href="" class="link-team">
                                     <svg class="icon-social-network">
                                         <use href="./images/icons.svg#instagram"></use>
                                     </svg>
                                 </a>
                             </li>
-                            <li class="items">
+                            <li class="items-icon">
                                 <a href="" class="link-team">
                                 <svg class="icon-social-network">
                                     <use href="./images/icons.svg#twitter"></use>
                                 </svg>
                                 </a>
                             </li>
-                            <li class="items">
+                            <li class="items-icon">
                                 <a href="" class="link-team">
                                 <svg class="icon-social-network">
                                     <use href="./images/icons.svg#facebook"></use>
                                 </svg>
                                 </a>
                             </li>
-                            <li class="items">
+                            <li class="items-icon">
                                 <a href="" class="link-team">
                                 <svg class="icon-social-network">
                                     <use href="./images/icons.svg#linkedin"></use>
@@ -282,42 +299,42 @@
         <div class="container">
             <h2 class="title-clients">Постоянные клиенты</h2>
         <ul class="list list-clients">
-            <li class="items">
+            <li class="items-clients">
                 <a href="" class="link-clients">
                     <svg class="icon-clients" width="41" height="46.7">
                         <use href="./images/icons.svg#yaco"></use>
                     </svg>
                 </a>
             </li>
-            <li class="items">
+            <li class="items-clients">
                 <a href="" class="link-clients">
                     <svg class="icon-clients" width="40" height="52">
                         <use href="./images/icons.svg#companytab"></use>
                     </svg>
                 </a>
             </li>
-            <li class="items">
+            <li class="items-clients">
                 <a href="" class="link-clients">
                     <svg class="icon-clients" width="43.46" height="41.18">
                         <use href="./images/icons.svg#company"></use>
                     </svg>
                 </a>
             </li>
-            <li class="items">
+            <li class="items-clients">
                 <a href="" class="link-clients">
                     <svg class="icon-clients" width="84.44" height="40.62">
                         <use href="./images/icons.svg#foster"></use>
                     </svg>
                 </a>
             </li>
-            <li class="items">
+            <li class="items-clients">
                 <a href="" class="link-clients">
                     <svg class="icon-clients" width="62.54" height="45.43">
                         <use href="./images/icons.svg#brand"></use>
                     </svg>
                 </a>
             </li>
-            <li class="items">
+            <li class="items-clients">
                 <a href="" class="link-clients">
                     <svg class="icon-clients" width="93.79" height="43.93">
                         <use href="./images/icons.svg#companytag"></use>
@@ -342,28 +359,28 @@
     <div class="footer-social-network">
         <p class="text-invitations">Присоединяйтесь</p>
         <ul class="list list-footer">
-            <li class="items">
+            <li class="items-footer">
                 <a class="link" href="">
                     <svg class="icon-social-network">
                         <use href="./images/icons.svg#instagram"></use>
                     </svg>
                 </a>
             </li>
-            <li class="items">
+            <li class="items-footer">
                 <a class="link" href="">
                     <svg class="icon-social-network">
                         <use href="./images/icons.svg#twitter"></use>
                     </svg>
                 </a> 
             </li>
-            <li class="items">
+            <li class="items-footer">
                 <a class="link" href="">
                     <svg class="icon-social-network">
                         <use href="./images/icons.svg#facebook"></use>
                     </svg>
                 </a> 
             </li>
-            <li class="items">
+            <li class="items-footer">
                 <a class="link" href="">
                     <svg class="icon-social-network">
                         <use href="./images/icons.svg#linkedin"></use>
@@ -374,5 +391,6 @@
     </div>
     </div>
    </footer>
+   <script src="./modal.js"></script>
 </body>
 </html>
