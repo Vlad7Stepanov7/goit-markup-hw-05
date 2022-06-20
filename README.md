@@ -1,2 +1,2 @@
-# goit-markup-hw-05
-dz 5
+# goit-markup-hw-01
+репозиторий для дз 1
